@@ -3,4 +3,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, allow_nil: true
   
   has_secure_password
+  
+  # currently not used
+  def self.generate_token
+    SecureRandom.urlsafe_base64
+  end
 end

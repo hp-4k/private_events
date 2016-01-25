@@ -18,18 +18,38 @@ RSpec.describe UsersController, type: :controller do
   
   describe "GET #show" do
     
-    before(:each) do
-      @user = create(:user)
+    context "with a logged in user" do
+    
+      before(:each) do
+        @user = create(:user)
+        log_in(@user)
+        get :show, id: @user
+      end
+      
+      it "assign the correct user to @user" do
+        expect(assigns(:user)).to eq @user
+      end
+      
+      it "renders the :show view" do
+        expect(response).to render_template :show
+      end
+      
     end
     
-    it "assign the correct user to @user" do
-      get :show, id: @user
-      expect(assigns(:user)).to eq @user
-    end
-    
-    it "renders the :show view" do
-      get :show, id: @user
-      expect(response).to render_template :show
+    context "with a logged out user" do
+      
+      before :each do
+        @user = create(:user)
+        get :show, id: @user
+      end
+
+      it "redirects to the log in page" do
+        expect(response).to redirect_to login_url
+      end
+      
+      it "sets the flash" do
+        expect(flash).not_to be_empty
+      end
     end
     
   end

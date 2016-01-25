@@ -9,5 +9,13 @@ FactoryGirl.define do
   factory :invalid_user, parent: :user do
     name ''
   end
+  
+  factory :alan, parent: :user do
+    name "Alan"
+  end
+  
+  factory :ben, parent: :user do
+    name "Ben"
+  end
 
 end

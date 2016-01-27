@@ -64,6 +64,16 @@ RSpec.describe UsersController, type: :controller do
         }.to change { User.count }.by(1)
       end
       
+      it "logs the user in" do
+        post :create, user: attributes_for(:user)
+        expect(logged_in?).to be true
+      end
+      
+      it "sets a flash message" do
+        post :create, user: attributes_for(:user)
+        expect(flash).not_to be_empty
+      end
+      
       it "redirects to the new user page" do
         post :create, user: attributes_for(:user)
         expect(response).to redirect_to User.last

@@ -152,7 +152,7 @@ body {
   }
 }
 
-/* restyle buttons */
+/* buttons */
 
 .btn-primary {
   background: white;
@@ -164,4 +164,11 @@ body {
     color: white;
     border: 1px solid $primary-color;
   }
+}
+
+/* flash */
+
+.alert {
+  border-radius: 0;
+  margin-top: 5px;
 }

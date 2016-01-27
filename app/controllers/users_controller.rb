@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
+      flash[:success] = "Your account was created. Welcome to Private Events."
       redirect_to @user
     else
       render :new
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
     
     def require_login
       unless current_user
-        flash[:warning] = "You need to log in to access this site"
+        flash[:danger] = "You need to log in to access this site"
         redirect_to login_url
       end
     end

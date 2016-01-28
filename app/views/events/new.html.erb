@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/profile', user: current_user %>
+    </div>
+    <div class="col-md-9">
+      
+      <% if @event.errors.any? %>
+        <div class="container-fluid">
+          <div class="alert alert-danger">
+            <p><%= pluralize(@event.errors.count, 'error') %> were found:</p>
+            <ul>
+              <% @event.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+      
+      <h1>New event</h1>
+      <%= form_for @event do |f| %>
+        
+        <div class="form-group text-left">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        
+        <div class="form-group text-left">
+          <%= f.label :date %>
+          <%= f.date_field :date, class: "form-control" %>
+        </div>
+        
+        <div class="form-group text-left">
+          <%= f.label :time %>
+          <%= f.time_field :time, class: "form-control" %>
+        </div>
+        
+        <div class="form-group text-left">
+          <%= f.label :location %>
+          <%= f.text_field :location, class: "form-control" %>
+        </div>
+        
+        <div class="form-group text-left">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+        
+        <%= f.submit 'Create a new event', class: "btn btn-primary" %>
+      
+      <% end %>
+  
+    </div>
+  </div>
+</div>
+

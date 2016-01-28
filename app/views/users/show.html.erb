@@ -1,10 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <h1><%= @user.name %></h1>
+      <%= render 'users/profile', user: @user %>
     </div>
     <div class="col-md-9">
-      <p>Events will be displayed here.</p>
+      <h2><%= current_user?(@user) ? "Your" : "#{@user.name}'s" %> events (<%= @user.events.count %>)</h2>
+      <% if @user.events.any? %>
+        <%= render @user.events %>
+      <% else %>
+        <p>Oops! It looks like you don't have any events yet. Create one.</p>
+      <% end %>
     </div>
   </div>
 </div>

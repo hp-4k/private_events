@@ -1,0 +1,22 @@
+<div class="container event-display">
+  <div class="row">
+    <div class="col-md-3"><p>Title</p></div>
+    <div class="col-md-9"><p><%= @event.title %></p></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"><p>Owner</p></div>
+    <div class="col-md-9"><p><%= link_to @event.owner_name, @event.owner %></p></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"><p>Date</p></div>
+    <div class="col-md-9"><p><%= format_date(@event.date) %></p></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"><p>Location</p></div>
+    <div class="col-md-9"><p><%= @event.location.to_s %></p></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"><p>Description</p></div>
+    <div class="col-md-9"><p><%= @event.description %></p></div>
+  </div>
+</div>

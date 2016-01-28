@@ -61,6 +61,20 @@ RSpec.describe SessionsHelper, type: :helper do
     
   end
   
+  describe "#current_user?" do
+    
+    it "returns true when the passed in user is the current user" do
+      helper.log_in(alan)
+      expect(current_user?(alan)).to be true
+    end
+    
+    it "returns false when the passed in user is not the current user" do
+      helper.log_in(ben)
+      expect(current_user?(alan)).to be false
+    end
+    
+  end
+  
   describe "#log_out" do
     
     it "logs the user out" do

@@ -26,12 +26,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :password, :password_confirmation)
     end
-    
-    def require_login
-      unless current_user
-        flash[:danger] = "You need to log in to access this site"
-        redirect_to login_url
-      end
-    end
-  
+
 end

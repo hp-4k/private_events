@@ -10,7 +10,7 @@ FactoryGirl.define do
     name ''
   end
   
-  factory :alan, parent: :user do
+  factory :alan, aliases: [:owner], parent: :user do
     name "Alan"
   end
   

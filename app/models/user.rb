@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :events, foreign_key: 'owner_id'
+  
   validates :name, presence: true, length: { minimum: 3 }, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
   

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to user
     else
-      flash[:warning] = "Invalid user name or password"
+      flash.now[:warning] = "Invalid user name or password"
       render :new
     end
   end

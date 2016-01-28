@@ -1,0 +1,5 @@
+<div class="event">
+  <p><%= link_to event.title, event %> <span class="details"><%= format_date(event.date) %></span>
+     <span class="details"></span><span class="details">owned by <%= link_to event.owner_name, event.owner %></span></p>
+  <p><%= event.description %></p>
+</div>

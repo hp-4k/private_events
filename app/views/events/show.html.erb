@@ -1,29 +1,35 @@
 <div class="container event-display">
+  
   <div class="row">
     <div class="col-md-3"><p>Title</p></div>
     <div class="col-md-9"><p><%= @event.title %></p></div>
   </div>
+  
   <div class="row">
     <div class="col-md-3"><p>Owner</p></div>
     <div class="col-md-9"><p><%= link_to @event.owner_name, @event.owner %></p></div>
   </div>
+  
   <div class="row">
     <div class="col-md-3"><p>Date</p></div>
     <div class="col-md-9"><p><%= format_date(@event.date) %></p></div>
   </div>
+  
   <div class="row">
     <div class="col-md-3"><p>Location</p></div>
     <div class="col-md-9"><p><%= @event.location.to_s %></p></div>
   </div>
+  
   <div class="row">
     <div class="col-md-3"><p>Description</p></div>
     <div class="col-md-9"><p><%= @event.description %></p></div>
   </div>
+  
   <div class="row">
     <div class="col-md-3"><p>Attending</p></div>
     <div class="col-md-9">
       <% if @event.attendees.any? %>
-        <ul>
+        <ul class="attendance-list">
           <% @event.attendees.each do |attendee| %>
             <li><%= link_to attendee.name, attendee %></li>
           <% end %>
@@ -31,6 +37,16 @@
       <% else %>
         <p>No one is attending this event yet.</p>
       <% end %>
+      
+      <% if current_user.attended_events.include? @event %>
+        <%= link_to "You are already attending this event", '#', class: "btn btn-disabled" %>
+      <% else %>
+        <%= form_tag '/invitations' do %>
+          <%= hidden_field_tag "invitation[attended_event_id]", @event.id %>
+          <%= submit_tag "Attend", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
+  
 </div>

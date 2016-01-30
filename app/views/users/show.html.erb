@@ -19,7 +19,7 @@
               <% if @user.events.upcoming.any? %>
                 <%= render @user.events.upcoming %>
               <% else %>
-                <p class="no-events-placeholder">You have no upcoming events.</p>
+                <p class="no-events-placeholder">You don't own any upcoming events.</p>
               <% end %>
             </div>
             
@@ -28,7 +28,7 @@
               <% if @user.events.past.any? %>
                 <%= render @user.events.past %>
               <% else %>
-                <p class="no-events-placeholder">You have no past events.</p>
+                <p class="no-events-placeholder">You don't own any past events.</p>
               <% end%>
             </div>
             
@@ -43,7 +43,25 @@
         
         <section class="attended tab-pane fade" id="attended">
           <% if @user.attended_events.any? %>
-            <%= render @user.attended_events %>
+            
+            <div class="upcoming">
+              <h3 class="category-header">Upcoming events</h3>
+              <% if @user.attended_events.upcoming.any? %>
+                <%= render @user.attended_events.upcoming %>
+              <% else %>
+                <p class="no-events-placeholder">You have no upcoming events to attend.</p>
+              <% end %>
+            </div>
+            
+            <div class="past">
+              <h3 class="category-header">Past events</h3>
+              <% if @user.attended_events.past.any? %>
+                <%= render @user.attended_events.past %>
+              <% else %>
+                <p class="no-events-placeholder">You did not attend any events in the past.</p>
+              <% end%>
+            </div>
+            
           <% else %>
             <% if current_user?(@user) %>
               <p class="no-events-placeholder">Oops! It looks like you are not attending any events yet. Whay don't you <%= link_to "browse", events_path %> through the list of all events and join some? Or <%= link_to "create", new_event_path %> your own.</p>

@@ -176,11 +176,17 @@ body {
   color: $primary-color;
   border: 1px solid $primary-color;
   
-  &:hover {
+  &:hover, &:active {
     background: $primary-color;
     color: white;
     border: 1px solid $primary-color;
   }
+}
+
+.btn-disabled, .btn-disabled:hover, .btn-disabled:active {
+  background: white;
+  color: #aaa;
+  border: 1px solid #aaa;
 }
 
 /* flash */
@@ -232,6 +238,12 @@ body {
   }
   .row:last-child .col-md-9 p {
     border-bottom: none;
+  }
+  .attendance-list {
+    padding-left: 0;
+    li {
+      list-style-position: inside;
+    }
   }
 }
 

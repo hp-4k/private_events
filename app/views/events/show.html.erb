@@ -19,4 +19,18 @@
     <div class="col-md-3"><p>Description</p></div>
     <div class="col-md-9"><p><%= @event.description %></p></div>
   </div>
+  <div class="row">
+    <div class="col-md-3"><p>Attending</p></div>
+    <div class="col-md-9">
+      <% if @event.attendees.any? %>
+        <ul>
+          <% @event.attendees.each do |attendee| %>
+            <li><%= link_to attendee.name, attendee %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No one is attending this event yet.</p>
+      <% end %>
+    </div>
+  </div>
 </div>

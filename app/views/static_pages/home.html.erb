@@ -6,7 +6,11 @@
       <h1>Private Events</h1>
       <h2>Events management made easy.</h2>
       
-      <%= link_to "Sign up", new_user_path, class: "btn btn-primary" %>
+      <%= link_to "Sign up", new_user_path, class: "btn btn-primary", id: "btn-sign-up" %>
+      
+      <div class="tooltip-wrapper">
+        <p id="login-tooltip">Want to test drive the app? You can login as "Sheldon", the password is "bazinga".</p>
+      </div>  
       
     </div>
   </div>

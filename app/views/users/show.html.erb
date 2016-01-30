@@ -4,12 +4,48 @@
       <%= render 'users/profile', user: @user %>
     </div>
     <div class="col-md-9">
-      <h2><%= current_user?(@user) ? "Your" : "#{@user.name}'s" %> events (<%= @user.events.count %>)</h2>
-      <% if @user.events.any? %>
-        <%= render @user.events %>
-      <% else %>
-        <p>Oops! It looks like you don't have any events yet. Create one.</p>
-      <% end %>
+      
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#owned" data-toggle="tab">Events <%= current_user?(@user) ? "you are" : "#{@user.name} is" %> organizing (<%= @user.events.count %>)</a></li>
+        <li><a href="#attended"data-toggle="tab">Events <%= current_user?(@user) ? "you are" : "#{@user.name} is" %> attending (<%= @user.attended_events.count %>)</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        <section class="owned tab-pane fade in active" id="owned">
+          <% if @user.events.any? %>
+            
+            <div class="upcoming">
+              <h3 class="category-header">Upcoming events</h3>
+              <% if @user.events.upcoming.any? %>
+                <%= render @user.events.upcoming %>
+              <% else %>
+                <p class="no-events-placeholder">You have no upcoming events.</p>
+              <% end %>
+            </div>
+            
+            <div class="past">
+              <h3 class="category-header">Past events</h3>
+              <% if @user.events.past.any? %>
+                <%= render @user.events.past %>
+              <% else %>
+                <p class="no-events-placeholder">You have no past events.</p>
+              <% end%>
+            </div>
+            
+          <% else %>
+            <p class="no-events-placeholder">Oops! It looks like you don't have any events yet. Create one.</p>
+          <% end %>
+        </section>
+        
+        <section class="attended tab-pane fade" id="attended">
+          <% if @user.attended_events.any? %>
+            <%= render @user.attended_events %>
+          <% else %>
+            <p class="no-events-placeholder">Oops! It looks like you are not attending any events yet. Whay don't you <%= link_to "browse", events_path %> through the list of all events and join some? Or <%= link_to "create", new_event_path %> your own.</p>
+          <% end %>
+        </section>
+      </div>
+      
     </div>
   </div>
 </div>

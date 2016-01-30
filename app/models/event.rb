@@ -1,9 +1,15 @@
 class Event < ActiveRecord::Base
+  belongs_to :owner, class_name: "User"
+  has_many :invitations, foreign_key: 'attended_event_id'
+  has_many :attendees, through: :invitations
+  
   before_save :include_time
   
-  belongs_to :owner, class_name: "User"
-  
   validates_presence_of :title, :description, :location, :date
+  
+  default_scope -> { order(date: :desc) }
+  scope :past, -> { where("date < ?", Time.now.strftime("%Y-%m-%d")) }
+  scope :upcoming, -> { where("date >= ?", Time.now.strftime("%Y-%m-%d")) }
   
   attr_accessor :time
   
@@ -20,4 +26,5 @@ class Event < ActiveRecord::Base
         self.date += minutes.minutes
       end
     end
+    
 end

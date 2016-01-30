@@ -1,0 +1,37 @@
+<div class="container about">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>About</h1>
+      <p>This website is an exercise constituting a part of <%= link_to "The Odin Project", "http://www.theodinproject.com/home" %>
+      curriculum. It is the final project of the <%= link_to "associations", "http://www.theodinproject.com/ruby-on-rails/associations" %> chapter
+     in the Ruby on Rails section of the course.</p>
+      <p>The website makes use of the following technologies:</p>
+      <ul>
+        <li>Ruby on Rails backend, including <code>has_many through:</code> associations with custom foreign keys,</li>
+        <li>Bootstrap-powered front end,</li>
+        <li>a little bit of JQuery,</li>
+        <li>Heroku hosting.</li>
+      </ul>
+      <p>Visit my <%= link_to "GitHub profile", "https://github.com/hp-4k", target: "_blank" %> to see more of my coursework including chess written in Ruby and a Twitter clone.</p>
+      <h2>Powered by</h2>
+    </div>
+  </div>
+  
+  <div class="row">
+    
+    <div class="col-md-4">
+      <%= link_to image_tag("rails-logo.png", alt:"Ruby on Rails"), "http://rubyonrails.org/", target: '_blank' %>
+    </div>
+    
+    <div class="col-md-4">
+      <%= link_to image_tag("bootstrap-logo.png", alt:"Twitter Bootstrap"), "http://getbootstrap.com/", target: '_blank' %>    
+    </div>
+    
+    <div class="col-md-4">
+      <%= link_to image_tag("heroku-logo.png", alt:"Heroku"), "https://www.heroku.com/", target: '_blank' %>
+    </div>
+    
+  </div>
+  
+  </div>
+</div>

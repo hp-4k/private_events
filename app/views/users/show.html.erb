@@ -33,7 +33,11 @@
             </div>
             
           <% else %>
-            <p class="no-events-placeholder">Oops! It looks like you don't have any events yet. Create one.</p>
+            <% if current_user?(@user) %>
+              <p class="no-events-placeholder">Oops! It looks like you don't have any events yet. <%= link_to 'Create one.', new_event_path %></p>
+            <% else %>
+              <p class="no-events-placeholder">No events.</p>
+            <% end %>
           <% end %>
         </section>
         
@@ -41,7 +45,11 @@
           <% if @user.attended_events.any? %>
             <%= render @user.attended_events %>
           <% else %>
-            <p class="no-events-placeholder">Oops! It looks like you are not attending any events yet. Whay don't you <%= link_to "browse", events_path %> through the list of all events and join some? Or <%= link_to "create", new_event_path %> your own.</p>
+            <% if current_user?(@user) %>
+              <p class="no-events-placeholder">Oops! It looks like you are not attending any events yet. Whay don't you <%= link_to "browse", events_path %> through the list of all events and join some? Or <%= link_to "create", new_event_path %> your own.</p>
+            <% else %>
+              <p class="no-events-placeholder">No events.</p>
+            <% end %>
           <% end %>
         </section>
       </div>

@@ -1,29 +1,31 @@
 <div class="container">
   <div class="row">
-
-    <% if Event.any? %>
-      
-      <div class="upcoming">
-        <h3 class="category-header">Upcoming events</h3>
-        <% if Event.any? %>
-          <%= render Event.upcoming %>
-        <% else %>
-          <p class="no-events-placeholder">There are no upcoming events.</p>
-        <% end %>
-      </div>
-      
-      <div class="past">
-        <h3 class="category-header">Past events</h3>
-        <% if Event.past.any? %>
-          <%= render Evnt.past %>
-        <% else %>
-          <p class="no-events-placeholder">There are no past events.</p>
-        <% end%>
-      </div>
-      
-    <% else %>
-      <p class="no-events-placeholder">There are not any events yet!</p>
-    <% end %>
+    <div class="col-xs-12">
     
+      <% if Event.any? %>
+        
+        <div class="upcoming">
+          <h3 class="category-header">Upcoming events</h3>
+          <% if Event.any? %>
+            <%= render Event.upcoming %>
+          <% else %>
+            <p class="no-events-placeholder">There are no upcoming events.</p>
+          <% end %>
+        </div>
+        
+        <div class="past">
+          <h3 class="category-header">Past events</h3>
+          <% if Event.past.any? %>
+            <%= render Event.past %>
+          <% else %>
+            <p class="no-events-placeholder">There are no past events.</p>
+          <% end%>
+        </div>
+        
+      <% else %>
+        <p class="no-events-placeholder">There are not any events yet!</p>
+      <% end %>
+    
+    </div>
   </div>
 </div>

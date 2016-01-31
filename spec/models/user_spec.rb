@@ -7,12 +7,6 @@ RSpec.describe User, type: :model do
     build(:user)
   end
   
-  describe '.generate_token' do
-    it "returns a random 16 characters token" do
-      expect(User.generate_token).to be_a String
-    end
-  end
-  
   describe '#name' do
     it "should not be blank" do
       user.name = ' ' * 50

@@ -8,5 +8,5 @@ The website makes use of the following technologies:
 + Bootstrap-powered front end,
 + a little bit of JQuery,
 + Heroku hosting.
-+ 
+
 Visit my [GitHub profile](https://github.com/hp-4k) to see more of my work including chess written in Ruby and a Twitter clone.
